@@ -91,23 +91,67 @@
 // }
 
 
+// struct User {
+//     name: String,
+//     age: u32,
+// }
+// fn main() {
+//     let user1 = User {
+//         name: String::from("Harsh"),
+//         age: 19
+//     };
+//      //call the static function
+//     println!("{}", is_allow(&user1));
+// }
+
+// fn is_allow(u: &User) -> bool {
+//     if u.name == "Harsh" && u.age >=18 {
+//         return true;
+//     }
+//     false
+// }
+
+
+//implement Struct
+
 struct User {
     name: String,
     age: u32,
 }
+
+
+impl User {
+    fn who_i_am() -> String {
+        return String::from("User Struct")
+    }
+   //non-static method
+    fn is_allow_A(&self) -> bool {
+        if self.age >= 18 && self.name == "Harsh" {
+        return true;
+        }
+        false
+    }
+}
+
+fn is_allow_B(u: &User) -> bool {
+    if u.age >= 18 {
+        return true;
+    }
+    false
+}
+
 fn main() {
     let user1 = User {
         name: String::from("Harsh"),
         age: 19
     };
-    println!("{}", is_allow(&user1));
-    print!("{}", user1.age);
-
-}
-
-fn is_allow(u: &User) -> bool {
-    if u.name == "Harsh" && u.age >=18 {
-        return true;
-    }
-    false
+    let user2 = User {
+        name: String::from("Harsh"),
+        age: 17
+    };
+    //call the non-static fxn
+ println!("{}", user1.is_allow_A());
+ println!("{}", is_allow_B(&user2));
+ //cal the static fxn   
+println!("{}", User::who_i_am());
 }
