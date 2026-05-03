@@ -114,44 +114,90 @@
 
 //implement Struct
 
-struct User {
-    name: String,
-    age: u32,
-}
+// struct User {
+//     name: String,
+//     age: u32,
+// }
 
 
-impl User {
-    fn who_i_am() -> String {
-        return String::from("User Struct")
-    }
+// impl User {
+//     fn who_i_am() -> String {
+//         return String::from("User Struct")
+//     }
    //non-static method
-    fn is_allow_A(&self) -> bool {
-        if self.age >= 18 && self.name == "Harsh" {
-        return true;
-        }
-        false
-    }
-}
+//     fn is_allow_A(&self) -> bool {
+//         if self.age >= 18 && self.name == "Harsh" {
+//         return true;
+//         }
+//         false
+//     }
+// }
+//static method
+// fn is_allow_B(u: &User) -> bool {
+//     if u.age >= 18 {
+//         return true;
+//     }
+//     false
+// }
 
-fn is_allow_B(u: &User) -> bool {
-    if u.age >= 18 {
-        return true;
-    }
-    false
-}
-
-fn main() {
-    let user1 = User {
-        name: String::from("Harsh"),
-        age: 19
-    };
-    let user2 = User {
-        name: String::from("Harsh"),
-        age: 17
-    };
+// fn main() {
+//     let user1 = User {
+//         name: String::from("Harsh"),
+//         age: 19
+//     };
+//     let user2 = User {
+//         name: String::from("Harsh"),
+//         age: 17
+//     };
     //call the non-static fxn
- println!("{}", user1.is_allow_A());
- println!("{}", is_allow_B(&user2));
- //cal the static fxn   
-println!("{}", User::who_i_am());
+//  println!("{}", user1.is_allow_A());
+//  println!("{}", is_allow_B(&user2));
+//  //cal the static fxn   
+// println!("{}", User::who_i_am());
+// }
+
+
+
+//enums 
+
+#[derive(PartialEq)]
+enum Shape {
+    Circle(f64),
+    Square(f64),
+    Rectangle(f64,f64),
 }
+//without pattern match
+// fn calculate_area(shape: Shape) -> f64 {
+//     if let Shape::Circle(radius) = shape {
+//         return radius * radius * 3.14;
+//     }
+//     if let Shape::Square(side) = shape {
+//         return side * side;
+//     }
+//     if let Shape::Rectangle(width, height) = shape {
+//         return width * height;
+//     } 
+//     return 0.0;
+// }
+
+
+impl Shape {
+
+//pattern matching over the differnet matches
+fn calculate_area(&self) -> f64 {
+    match self {
+        Shape::Circle(radius) => 3.14 * radius * radius, 
+        Shape::Square(side) => side * side,
+        Shape::Rectangle(width, height) => width * height,
+    }
+}
+}
+fn main() {
+    let circle = Shape::Circle(5.0);
+    let square = Shape::Square(5.0);
+    let rectangle = Shape::Rectangle(5.0, 6.0);
+    println!("{}", circle.calculate_area());
+    println!("{}", square.calculate_area());
+    println!("{}", rectangle.calculate_area());
+}
+
