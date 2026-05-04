@@ -160,12 +160,12 @@
 
 //enums 
 
-#[derive(PartialEq)]
-enum Shape {
-    Circle(f64),
-    Square(f64),
-    Rectangle(f64,f64),
-}
+// #[derive(PartialEq)]
+// enum Shape {
+//     Circle(f64),
+//     Square(f64),
+//     Rectangle(f64,f64),
+// }
 //without pattern match
 // fn calculate_area(shape: Shape) -> f64 {
 //     if let Shape::Circle(radius) = shape {
@@ -181,23 +181,67 @@ enum Shape {
 // }
 
 
-impl Shape {
+// impl Shape {
 
-//pattern matching over the differnet matches
-fn calculate_area(&self) -> f64 {
-    match self {
-        Shape::Circle(radius) => 3.14 * radius * radius, 
-        Shape::Square(side) => side * side,
-        Shape::Rectangle(width, height) => width * height,
-    }
-}
+// //pattern matching over the differnet matches
+// fn calculate_area(&self) -> f64 {
+//     match self {
+//         Shape::Circle(radius) => 3.14 * radius * radius, 
+//         Shape::Square(side) => side * side,
+//         Shape::Rectangle(width, height) => width * height,
+//     }
+// }
+// }
+// fn main() {
+//     let circle = Shape::Circle(5.0);
+//     let square = Shape::Square(5.0);
+//     let rectangle = Shape::Rectangle(5.0, 6.0);
+//     println!("{}", circle.calculate_area());
+//     println!("{}", square.calculate_area());
+//     println!("{}", rectangle.calculate_area());
+// }
+
+
+//error handling(Result enum)
+
+
+// use std::fs;
+
+// fn main() {
+// let greeting_file_result = fs::read_to_string("hello.txt");
+// //result enum
+// match greeting_file_result {
+//     Ok(file_content) => {
+//        println!("{}", file_content);
+//  }
+//     Err(err) => {
+//         println!("{}", err);
+//     }
+// }
+// }
+
+// fn main() {
+//     let file_content = fs::read_to_string("hello.txt").unwrap_or(String::from("Empty file"));
+//     println!("{}", file_content);
+// }
+
+
+
+
+//Nullability(option enum)
+fn find_first_a(s: String) -> Option<i32> {
+    for(index, character) in s.chars().enumerate() {
+        if character == 'a' {
+            return Some(index as i32);
+        }
+     }
+     return None;
 }
 fn main() {
-    let circle = Shape::Circle(5.0);
-    let square = Shape::Square(5.0);
-    let rectangle = Shape::Rectangle(5.0, 6.0);
-    println!("{}", circle.calculate_area());
-    println!("{}", square.calculate_area());
-    println!("{}", rectangle.calculate_area());
+    let value = find_first_a(String::from("aaru"));
+      
+    match value {
+        Some(value) => println!("{}", value),
+        None => println!(" could not find a")
+    }
 }
-
