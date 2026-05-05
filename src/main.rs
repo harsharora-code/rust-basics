@@ -229,19 +229,45 @@
 
 
 //Nullability(option enum)
-fn find_first_a(s: String) -> Option<i32> {
-    for(index, character) in s.chars().enumerate() {
-        if character == 'a' {
-            return Some(index as i32);
-        }
-     }
-     return None;
-}
-fn main() {
-    let value = find_first_a(String::from("aaru"));
+// fn find_first_a(s: String) -> Option<i32> {
+//     for(index, character) in s.chars().enumerate() {
+//         if character == 'a' {
+//             return Some(index as i32);
+//         }
+//      }
+//      return None;
+// }
+// fn main() {
+//     let value = find_first_a(String::from("vidisha"));
       
-    match value {
-        Some(value) => println!("{}", value),
-        None => println!(" could not find a")
+//     match value {
+//         Some(value) => println!("{}", value),
+//         None => println!(" could not find a")
+//     }
+// }
+
+
+
+//generic fxn
+
+struct Rect<T> {
+    width: T,
+    height: T
+}
+// fn mul_generic<T>(a: T, b: T) -> T {
+//     return a*b;
+// }
+
+
+
+fn main() { 
+    let a1 = Rect {
+         width: 20.0,
+         height: 30.0
     }
+    println!("{}",get_area(a1));
+}
+
+fn get_area<T>(v: Rect<T>) -> T {
+    return v.width * v.height;
 }
