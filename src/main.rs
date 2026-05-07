@@ -250,24 +250,30 @@
 
 //generic fxn
 
-struct Rect<T> {
-    width: T,
-    height: T
-}
+// struct Rect<T> {
+//     width: T,
+//     height: T
+// }
 // fn mul_generic<T>(a: T, b: T) -> T {
 //     return a*b;
 // }
 
 
 
-fn main() { 
-    let a1 = Rect {
-         width: 20.0,
-         height: 30.0
-    }
-    println!("{}",get_area(a1));
-}
+// fn main() { 
+//     let a1 = Rect {
+//          width: 20.0,
+//          height: 30.0
+//     }
+//     println!("{}",get_area(a1));
+// }
 
-fn get_area<T>(v: Rect<T>) -> T {
-    return v.width * v.height;
+// fn get_area<T>(v: Rect<T>) -> T {
+//     return v.width * v.height;
+// }
+
+mod macros;
+fn main() {
+
+    macros::run();
 }
