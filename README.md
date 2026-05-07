@@ -23,3 +23,7 @@ error handling, option enum
 Generics and trait bounds
 <br/>
 Macros
+<br/>
+clone Macros
+<br/>
+Serde
