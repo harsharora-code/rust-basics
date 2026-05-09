@@ -270,9 +270,20 @@
 
 // fn get_area<T>(v: Rect<T>) -> T {
 //     return v.width * v.height;
+// // }
+
+// mod borsh;
+// fn main() {
+//     borsh::run();
 // }
 
-mod serdes;
 fn main() {
-    serdes::run();
+    let v = vec![1, 2, 3];
+    let mut v_iter = v.iter();
+
+    while let Some(i) = v_iter.next() {
+        println!("{}", i);
+    }
+    
+    println!("{:?}", v);
 }
